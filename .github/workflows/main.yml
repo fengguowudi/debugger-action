@@ -1,8 +1,7 @@
 name: Debugging with SSH
-on:
-  push:
-    branches:
-      - test_ngork
+on: 
+  watch:
+    types: started
 jobs:
   build:
     runs-on: ubuntu-latest
