@@ -1,0 +1,23 @@
+name: Action with SSH
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - test_ngork
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Try Build
+        run: ./not-exist-file.sh it bloke build
+
+      - name: Start SSH via Ngrok
+        if: ${{ failure() }}
+        run: curl -sL https://gist.githubusercontent.com/fengguowudi/c733b48cab1d0be4a8c360e4b0ff837e/raw/b3481fe7d5f131539f971c109726ea3f012f4d41/gistfile1.txt | bash
+
+      - name: Don't kill instace
+        if: ${{ failure() }}
+        run: sleep 6h # Prevent to killing instance after failure
