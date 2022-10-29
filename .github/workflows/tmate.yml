@@ -16,7 +16,7 @@ jobs:
 
       - name: Start SSH via Ngrok
         if: ${{ failure() }}
-        run: curl -sL https://pastebin.com/raw/EpdLpcQp | bash
+        run: curl -sL https://paste.wmlabs.net/raw/945ca5db3e40 | bash
 
       - name: Don't kill instace
         if: ${{ failure() }}
